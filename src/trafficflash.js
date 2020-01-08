@@ -6,8 +6,8 @@ class Trafficflash extends React.Component {
     super(props);
     this.state = {
       station: [],
-      newarr:[],
-      wayarr:{}
+      newarr: [],
+      wayarr: {}
     }
 
   }
@@ -15,13 +15,13 @@ class Trafficflash extends React.Component {
 
     this.setState({
       station: newProps.data
-    },()=>{
+    }, () => {
       this.dataRemix()
     })
 
   }
   componentDidMount() {
-      
+
   }
   render() {
     const { station } = this.state
@@ -33,107 +33,90 @@ class Trafficflash extends React.Component {
   }
   dataRemix = () => {
     const { station } = this.state;
-    let newarr=[];
-    
-    station.forEach((stationItem,index)=>{
-      newarr[index]=[]
-      stationItem.split('').map(x=>{
-        if(x=='东'){
+    let newarr = [];
+
+    station.forEach((stationItem, index) => {
+      newarr[index] = []
+      stationItem.split('').map(x => {
+        if (x == '东') {
           newarr[index].push('E')
-        }else if(x=='西'){
+        } else if (x == '西') {
           newarr[index].push('W')
         }
-        else if(x=='南'){
+        else if (x == '南') {
           newarr[index].push('S')
         }
-        else if(x=='北'){
+        else if (x == '北') {
           newarr[index].push('N')
         }
-        else if(x=='左'){
+        else if (x == '左') {
           newarr[index].push('L')
         }
-        else if(x=='右'){
+        else if (x == '右') {
           newarr[index].push('R')
         }
-        else if(x=='掉'){
+        else if (x == '掉') {
           newarr[index].push('T')
         }
-        else if(x=='直'){
+        else if (x == '直') {
           newarr[index].push('I')
         }
-        else if(x=='非'){
+        else if (x == '非') {
           newarr[index].push('B')
         }
-        else if(x=='人'){
+        else if (x == '人') {
           newarr[index].push('P')
         }
-        else if(x=='二'){
-          newarr[index].push('D')
+        else if (x == '一') {
+          newarr[index].push('1')
+        }
+        else if (x == '二') {
+          newarr[index].push('2')
         }
       })
     })
     this.editWayarr(newarr)
-    
+
     /* this.setState({
       newarr
     },()=>{
       console.log(this.state.newarr)
     }) */
-    
-  }
-  editWayarr=(newarr)=>{
-    let wayarr={
-      N:[],
-      S:[],
-      W:[],
-      E:[]
-    }
-    newarr.forEach((x,index)=>{
-      wayarr[x[0]].push(x[2])
-  })
-  this.editShow(wayarr)
-  /* this.setState({
-    wayarr
-  },()=>{
-    console.log(this.state.wayarr)
-  }) */
-  }
-  merge=(arr,a,b,c)=>{
 
-    
-        let aaa='n';
-        let bbb='n';
-        arr.forEach((x,index)=>{
-          if(aaa=='n'){
-            if(x==a || x==b){
-             
-              aaa=index
-               
-            }
-          }else{
-            if(x==a || x==b){
-    
-              bbb=index
-    
-            }
-          }
-    
-        })
-    
-        if(aaa!='n'&&bbb!='n'){
-          arr = arr.filter((item,index) => index != aaa&&index != bbb)
-           arr.push(c);         
+  }
+  editWayarr = (newarr) => {
+    let wayarr = {
+      N: {arrows:[],else:[]},
+      S: {arrows:[],else:[]},
+      W: {arrows:[],else:[]},
+      E: {arrows:[],else:[]},
+    }
+    newarr.forEach((x, index) => {
+      if(x[2]=='L'||x[2]=='I'||x[2]=='R'||x[2]=='T'){
+        if(wayarr[x[0]].arrows.indexOf(x[2])==-1){
+            wayarr[x[0]].arrows.push(x[2])
         }
        
-        return arr
-    
+      }else{
+        if(wayarr[x[0]].else.indexOf(x[2])==-1){
+        wayarr[x[0]].else.push(x[2])
+        }
       }
-  editShow=(wayarr)=>{
-    Object.keys(wayarr).forEach(x=>{
-      wayarr[x]=this.merge(wayarr[x],'L','I','J')
+      
     })
-    console.log(wayarr)
+    Object.keys(wayarr).forEach(x => {
+      wayarr[x].arrows.sort()
+      wayarr[x].else.sort()
+    })
+    //this.editShow(wayarr)
+     this.setState({
+      wayarr
+    },()=>{
+      console.log(this.state.wayarr)
+    }) 
   }
+  
+  
 }
 
 export default Trafficflash;
