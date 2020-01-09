@@ -22,17 +22,8 @@ class Trafficflashfather extends React.Component {
     return (
       <div>
        <p>{station.toString()}</p>
-       <Select defaultValue="北向东左转" style={{ width: 120 }} onChange={this.handleChange}>
-          <Option value="北向东左转"> 北向东左转</Option>
-          <Option value="北向南直行"> 北向南直行</Option>
-          <Option value="北向南非机"> 北向南非机</Option>
-          <Option value="北向西右转"> 北向西右转</Option>
-          <Option value="北向南掉头"> 北向南掉头</Option>
-          <Option value="北向南行人"> 北向南行人</Option>
-          <Option value="北向南行二"> 北向南行二</Option>
-          <Option value="北向南行一"> 北向南行一</Option>
-        </Select>
-        {/* <Select defaultValue="北向东左转" style={{ width: 120 }} onChange={this.handleChange}>
+       
+         <Select defaultValue="北向东左转" style={{ width: 120 }} onChange={this.handleChange}>
           <Option value="北向东左转"> 北向东左转</Option>
           <Option value="北向南直行"> 北向南直行</Option>
           <Option value="北向南非机"> 北向南非机</Option>
@@ -65,7 +56,7 @@ class Trafficflashfather extends React.Component {
           <Option value="东向西行一"> 东向西行一</Option>
           <Option value="南向北行一"> 南向北行一</Option>
           <Option value="西向东行一"> 西向东行一</Option>
-        </Select> */}
+        </Select> 
         <Trafficflash data={station}></Trafficflash>
       </div>
     ) 

@@ -1,13 +1,32 @@
 import React from 'react';
 import './App.css';
-
+const img_arr = {
+  T: ('./img/T.svg'),
+  R:require('./img/R.svg'),
+  P:require('./img/P.svg'),
+  D:require('./img/D.svg'),
+  I  : require('./img/I.svg'),
+  IL : require('./img/IL.svg'),
+  ILR: require('./img/ILR.svg'),
+  ILT: require('./img/ILT.svg'),
+  IR : require('./img/IR.svg'),
+  IT : require('./img/IT.svg'),
+  L  : require('./img/L.svg'),
+  LR : require('./img/LR.svg'),
+  LT : require('./img/LT.svg')
+}
 class Trafficflash extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       station: [],
       newarr: [],
-      wayarr: {}
+      wayarr: {
+        N: {arrows:[],else:[]},
+        S: {arrows:[],else:[]},
+        W: {arrows:[],else:[]},
+        E: {arrows:[],else:[]},
+      }
     }
 
   }
@@ -24,10 +43,18 @@ class Trafficflash extends React.Component {
 
   }
   render() {
-    const { station } = this.state
+    const { station,wayarr } = this.state
+    const aaa='R'
     return (
       <div>
         {station.toString()}
+        <div style={{width:'300px',height:'300px',border:'2px solid #fff',position:'relative'}}>
+          <img  className={'arrows-n'} src={img_arr[wayarr.N.arrows.join('')]}/>
+          <img  className={'arrows-s'} src={img_arr[wayarr.S.arrows.join('')]}/>
+          <img  className={'arrows-e'} src={img_arr[wayarr.E.arrows.join('')]}/>
+          <img  className={'arrows-w'} src={img_arr[wayarr.W.arrows.join('')]}/>
+        </div>
+        
       </div>
     )
   }
@@ -112,7 +139,7 @@ class Trafficflash extends React.Component {
      this.setState({
       wayarr
     },()=>{
-      console.log(this.state.wayarr)
+      console.log(this.state.wayarr.N.arrows.toString())
     }) 
   }
   
