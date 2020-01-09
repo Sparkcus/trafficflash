@@ -21,7 +21,7 @@ class Trafficflashfather extends React.Component {
    const{station}=this.state
     return (
       <div>
-       <p>{station.toString()}</p>
+       
        
          <Select defaultValue="北向东左转" style={{ width: 120 }} onChange={this.handleChange}>
           <Option value="北向东左转"> 北向东左转</Option>

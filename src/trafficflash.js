@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 const img_arr = {
-  T: ('./img/T.svg'),
+  T:require('./img/T.svg'),
   R:require('./img/R.svg'),
   P:require('./img/P.svg'),
   D:require('./img/D.svg'),
@@ -51,7 +51,7 @@ class Trafficflash extends React.Component {
     return (
       <div>
         {station.toString()}
-        <div style={{width:'300px',height:'300px',border:'2px solid #fff',position:'fixed',top:'0',left:'0'}}>
+        <div style={{width:'300px',height:'300px',border:'2px solid #fff',position:'fixed',top:'26%',left:'40%',overflow:'hidden'}}>
           <img  className={'arrows-n'} src={img_arr[wayarr.N.arrows.join('')]}/>
           <img  className={'arrows-s'} src={img_arr[wayarr.S.arrows.join('')]}/>
           <img  className={'arrows-e'} src={img_arr[wayarr.E.arrows.join('')]}/>

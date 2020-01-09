@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <img style={{opacity:'0.1'}} src={logo} className="App-logo" alt="logo" />
         
         <Trafficflashfather ></Trafficflashfather>
       </header>
