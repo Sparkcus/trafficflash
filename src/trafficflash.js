@@ -13,7 +13,10 @@ const img_arr = {
   IT : require('./img/IT.svg'),
   L  : require('./img/L.svg'),
   LR : require('./img/LR.svg'),
-  LT : require('./img/LT.svg')
+  LT : require('./img/LT.svg'),
+  Q : require('./img/Q.svg'),
+  A : require('./img/A.svg'),
+  AQ : require('./img/AQ.svg')
 }
 class Trafficflash extends React.Component {
   constructor(props) {
@@ -48,11 +51,16 @@ class Trafficflash extends React.Component {
     return (
       <div>
         {station.toString()}
-        <div style={{width:'300px',height:'300px',border:'2px solid #fff',position:'relative'}}>
+        <div style={{width:'300px',height:'300px',border:'2px solid #fff',position:'fixed',top:'0',left:'0'}}>
           <img  className={'arrows-n'} src={img_arr[wayarr.N.arrows.join('')]}/>
           <img  className={'arrows-s'} src={img_arr[wayarr.S.arrows.join('')]}/>
           <img  className={'arrows-e'} src={img_arr[wayarr.E.arrows.join('')]}/>
           <img  className={'arrows-w'} src={img_arr[wayarr.W.arrows.join('')]}/>
+          <img  className={'else-n-p'} src={img_arr[wayarr.N.else.join('')]}/>
+          <img  className={'else-s-p'} src={img_arr[wayarr.S.else.join('')]}/>
+          <img  className={'else-w-p'} src={img_arr[wayarr.W.else.join('')]}/>
+          <img  className={'else-e-p'} src={img_arr[wayarr.E.else.join('')]}/>
+          {/* <img  className={'else-n-d'} src={img_arr.D}/> */}
         </div>
         
       </div>
@@ -95,10 +103,10 @@ class Trafficflash extends React.Component {
           newarr[index].push('P')
         }
         else if (x == '一') {
-          newarr[index].push('1')
+          newarr[index].push('Q')
         }
         else if (x == '二') {
-          newarr[index].push('2')
+          newarr[index].push('A')
         }
       })
     })
@@ -139,7 +147,7 @@ class Trafficflash extends React.Component {
      this.setState({
       wayarr
     },()=>{
-      console.log(this.state.wayarr.N.arrows.toString())
+      console.log(this.state.wayarr)
     }) 
   }
   
