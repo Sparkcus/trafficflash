@@ -77,21 +77,29 @@
 .mu-arrows-n{
   position:absolute;top:12%;left:40%;width:20%;
   transform: rotate(180deg);
+  border-left: 1px dashed #bba2a2;
+  border-right: 1px dashed #bba2a2;
   
 }
 .mu-arrows-s{
   position:absolute;bottom:12%;right:40%;width:20%;
   transform: rotate(0deg);
+  border-left: 1px dashed #bba2a2;
+  border-right: 1px dashed #bba2a2;
   
 }
 .mu-arrows-e{
   position:absolute;top:40%;right:14%;width:20%;
   transform: rotate(270deg);
+  border-left: 1px dashed #bba2a2;
+  border-right: 1px dashed #bba2a2;
   
 }
 .mu-arrows-w{
   position:absolute;bottom:40%;left:14%;width:20%;
   transform: rotate(90deg);
+  border-left: 1px dashed #bba2a2;
+  border-right: 1px dashed #bba2a2;
   
 }
 
@@ -99,21 +107,29 @@
 .mu-arrows-ne{
   position:absolute;top:16%;left:66%;width:20%;
   transform: rotate(225deg);
+  border-left: 1px dashed #bba2a2;
+  border-right: 1px dashed #bba2a2;
   
 }
 .mu-arrows-se{
   position:absolute;bottom:14%;right:14%;width:20%;
   transform: rotate(315deg);
+  border-left: 1px dashed #bba2a2;
+  border-right: 1px dashed #bba2a2;
   
 }
 .mu-arrows-sw{
   position:absolute;top:66%;right:66%;width:20%;
   transform: rotate(45deg);
+  border-left: 1px dashed #bba2a2;
+  border-right: 1px dashed #bba2a2;
   
 }
 .mu-arrows-nw{
   position:absolute;bottom:63%;left:14%;width:20%;
   transform: rotate(135deg);
+  border-left: 1px dashed #bba2a2;
+  border-right: 1px dashed #bba2a2;
   
 }
 .mu-people-n-p{
