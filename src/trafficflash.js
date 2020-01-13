@@ -25,10 +25,14 @@ class Trafficflash extends React.Component {
       station: [],
       newarr: [],
       wayarr: {
-        N: {arrows:[],else:[]},
-        S: {arrows:[],else:[]},
-        W: {arrows:[],else:[]},
-        E: {arrows:[],else:[]},
+        N: {arrows:[],people:[]},
+        S: {arrows:[],people:[]},
+        W: {arrows:[],people:[]},
+        E: {arrows:[],people:[]},
+        NE:{arrows:[],people:[]},
+        SE:{arrows:[],people:[]},
+        SW:{arrows:[],people:[]},
+        NW:{arrows:[],people:[]},
       }
     }
 
@@ -56,94 +60,101 @@ class Trafficflash extends React.Component {
           <img  className={'arrows-s'} src={img_arr[wayarr.S.arrows.join('')]}/>
           <img  className={'arrows-e'} src={img_arr[wayarr.E.arrows.join('')]}/>
           <img  className={'arrows-w'} src={img_arr[wayarr.W.arrows.join('')]}/>
-          <img  className={'else-n-p'} src={img_arr[wayarr.N.else.join('')]}/>
-          <img  className={'else-s-p'} src={img_arr[wayarr.S.else.join('')]}/>
-          <img  className={'else-w-p'} src={img_arr[wayarr.W.else.join('')]}/>
-          <img  className={'else-e-p'} src={img_arr[wayarr.E.else.join('')]}/>
-          {/* <img  className={'else-n-d'} src={img_arr.D}/> */}
+          <img  className={'people-n-p'} src={img_arr[wayarr.N.people.join('')]}/>
+          <img  className={'people-s-p'} src={img_arr[wayarr.S.people.join('')]}/>
+          <img  className={'people-w-p'} src={img_arr[wayarr.W.people.join('')]}/>
+          <img  className={'people-e-p'} src={img_arr[wayarr.E.people.join('')]}/>
         </div>
         
       </div>
     )
   }
+  setArrows = (arrows) =>{
+    switch (arrows){
+      case '左转':return 'L';break;
+      case '直行':return 'I';break;
+      case '右转':return 'R';break;
+      case '掉头':return 'T';break;
+      default:return '';break;
+   
+    }
+  }
+  setPeople = (people) =>{
+    switch (people){
+
+      case '行人':return 'P';break;
+      case '行一':return 'Q';break;
+      case '行二':return 'A';break;
+      case '非机':return 'B';break;
+      default:return '';break;
+   
+    }
+  }
+  setDerection = (derection) =>{
+    if(derection.indexOf('向')!=-1){
+      switch (derection[0]){
+        case '东':return 'E';break;
+        case '南':return 'S';break;
+        case '西':return 'W';break;
+        case '北':return 'N';break;
+        default:return '';break;
+      }
+    }else{
+      switch (derection){
+        case '东':return 'E';break;
+        case '东北':return 'NE';break;
+        case '东南':return 'SE';break;
+        case '南':return 'S';break;
+        case '西':return 'W';break;
+        case '西南':return 'SW';break;
+        case '西北':return 'NW';break;
+        case '北':return 'N';break;
+        default:return '';break;
+      }
+    }
+    
+  }
+
   dataRemix = () => {
     const { station } = this.state;
     let newarr = [];
-
+    let setArrows = this.setArrows
+    let setDerection = this.setDerection
+    let setPeople = this.setPeople
     station.forEach((stationItem, index) => {
       newarr[index] = []
-      stationItem.split('').map(x => {
-        if (x == '东') {
-          newarr[index].push('E')
-        } else if (x == '西') {
-          newarr[index].push('W')
-        }
-        else if (x == '南') {
-          newarr[index].push('S')
-        }
-        else if (x == '北') {
-          newarr[index].push('N')
-        }
-        else if (x == '左') {
-          newarr[index].push('L')
-        }
-        else if (x == '右') {
-          newarr[index].push('R')
-        }
-        else if (x == '掉') {
-          newarr[index].push('T')
-        }
-        else if (x == '直') {
-          newarr[index].push('I')
-        }
-        else if (x == '非') {
-          newarr[index].push('B')
-        }
-        else if (x == '人') {
-          newarr[index].push('P')
-        }
-        else if (x == '一') {
-          newarr[index].push('Q')
-        }
-        else if (x == '二') {
-          newarr[index].push('A')
-        }
-      })
+      newarr[index].arrows = setArrows(stationItem.slice(-2));
+      newarr[index].people = setPeople(stationItem.slice(-2));
+      newarr[index].derection = setDerection(stationItem.slice(0,-2));
+      //console.log(newarr)
     })
     this.editWayarr(newarr)
-
-    /* this.setState({
-      newarr
-    },()=>{
-      console.log(this.state.newarr)
-    }) */
-
   }
+
   editWayarr = (newarr) => {
     let wayarr = {
-      N: {arrows:[],else:[]},
-      S: {arrows:[],else:[]},
-      W: {arrows:[],else:[]},
-      E: {arrows:[],else:[]},
+      N: {arrows:[],people:[]},
+      S: {arrows:[],people:[]},
+      W: {arrows:[],people:[]},
+      E: {arrows:[],people:[]},
+      NE:{arrows:[],people:[]},
+      SE:{arrows:[],people:[]},
+      SW:{arrows:[],people:[]},
+      NW:{arrows:[],people:[]},
     }
     newarr.forEach((x, index) => {
-      if(x[2]=='L'||x[2]=='I'||x[2]=='R'||x[2]=='T'){
-        if(wayarr[x[0]].arrows.indexOf(x[2])==-1){
-            wayarr[x[0]].arrows.push(x[2])
-        }
-       
-      }else{
-        if(wayarr[x[0]].else.indexOf(x[2])==-1){
-        wayarr[x[0]].else.push(x[2])
-        }
+      if(x.arrows){
+        wayarr[x.derection].arrows.push(x.arrows)
+      }
+      if(x.people){
+        wayarr[x.derection].people.push(x.people)
       }
       
     })
     Object.keys(wayarr).forEach(x => {
       wayarr[x].arrows.sort()
-      wayarr[x].else.sort()
+      wayarr[x].people.sort()
     })
-    //this.editShow(wayarr)
      this.setState({
       wayarr
     },()=>{

@@ -54,20 +54,20 @@
   position:absolute;bottom:12%;left:14%;width:30%;
   transform: rotate(90deg);
 }
-.else-n-p{
+.people-n-p{
   position:absolute;bottom:6%;left:-38%;width:90%;
   transform: rotate(180deg);
 }
 
-.else-s-p{
+.people-s-p{
   position:absolute;bottom:6%;right:-38%;width:90%;
   transform: rotate(0deg);
 }
-.else-w-p{
+.people-w-p{
   position:absolute;bottom:-39%;right:4%;width:90%;
   transform: rotate(90deg);
 }
-.else-e-p{
+.people-e-p{
   position:absolute;top:-39%;right:6%;width:90%;
   transform: rotate(270deg);
 }
