@@ -71,3 +71,92 @@
   position:absolute;top:-39%;right:6%;width:90%;
   transform: rotate(270deg);
 }
+
+
+
+.mu-arrows-n{
+  position:absolute;top:12%;left:40%;width:20%;
+  transform: rotate(180deg);
+  
+}
+.mu-arrows-s{
+  position:absolute;bottom:12%;right:40%;width:20%;
+  transform: rotate(0deg);
+  
+}
+.mu-arrows-e{
+  position:absolute;top:40%;right:14%;width:20%;
+  transform: rotate(270deg);
+  
+}
+.mu-arrows-w{
+  position:absolute;bottom:40%;left:14%;width:20%;
+  transform: rotate(90deg);
+  
+}
+
+
+.mu-arrows-ne{
+  position:absolute;top:16%;left:66%;width:20%;
+  transform: rotate(225deg);
+  
+}
+.mu-arrows-se{
+  position:absolute;bottom:14%;right:14%;width:20%;
+  transform: rotate(315deg);
+  
+}
+.mu-arrows-sw{
+  position:absolute;top:66%;right:66%;width:20%;
+  transform: rotate(45deg);
+  
+}
+.mu-arrows-nw{
+  position:absolute;bottom:63%;left:14%;width:20%;
+  transform: rotate(135deg);
+  
+}
+.mu-people-n-p{
+  position:absolute;bottom:26%;left:-17%;width:45%;
+  transform: rotate(180deg);
+  
+}
+
+.mu-people-s-p{
+  position:absolute;bottom:26%;right:-18%;width:45%;
+  transform: rotate(0deg);
+  
+}
+.mu-people-w-p{
+  position:absolute;bottom:-19%;right:27%;width:45%;
+  transform: rotate(90deg);
+  
+}
+.mu-people-e-p{
+  position:absolute;top:-16%;right:27%;width:45%;
+  transform: rotate(270deg);
+  
+}
+
+
+.mu-people-ne-p{
+  position:absolute;bottom:67%;left:68%;width:30%;
+  transform: rotate(135deg);
+  
+}
+
+.mu-people-se-p{
+  position:absolute;bottom:0%;right:0%;width:30%;
+  transform: rotate(225deg);
+  
+}
+.mu-people-sw-p{
+  position:absolute;bottom:-1%;right:69%;width:30%;
+  transform: rotate(135deg);
+  
+}
+.mu-people-nw-p{
+  position:absolute;top:3%;right:68%;width:30%;
+  transform: rotate(45deg);
+  
+}

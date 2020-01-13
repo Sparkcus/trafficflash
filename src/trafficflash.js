@@ -25,15 +25,16 @@ class Trafficflash extends React.Component {
       station: [],
       newarr: [],
       wayarr: {
-        N: {arrows:[],people:[]},
-        S: {arrows:[],people:[]},
-        W: {arrows:[],people:[]},
-        E: {arrows:[],people:[]},
-        NE:{arrows:[],people:[]},
-        SE:{arrows:[],people:[]},
-        SW:{arrows:[],people:[]},
-        NW:{arrows:[],people:[]},
-      }
+        N: {arrows:['I','R'],people:['']},
+        S: {arrows:['R'],people:['']},
+        W: {arrows:['I','L','R'],people:['']},
+        E: {arrows:['I'],people:['']},
+        NE:{arrows:[],people:['']},
+        SE:{arrows:[],people:['P']},
+        SW:{arrows:['L','R'],people:['']},
+        NW:{arrows:[],people:['Q']},
+      },
+      multiway:true
     }
 
   }
@@ -50,8 +51,51 @@ class Trafficflash extends React.Component {
 
   }
   render() {
-    const { station,wayarr } = this.state
+    const { station,wayarr,multiway } = this.state
     const aaa='R'
+    if(multiway){
+      return (
+        <div>
+          {station.toString()}
+          <div style={{width:'300px',height:'300px',border:'2px solid #fff',position:'fixed',top:'26%',left:'40%',overflow:'hidden'}}>
+            <img  className={'mu-arrows-n'} src={img_arr[wayarr.N.arrows.join('')]}/>
+            <img  className={'mu-arrows-s'} src={img_arr[wayarr.S.arrows.join('')]}/>
+            <img  className={'mu-arrows-e'} src={img_arr[wayarr.E.arrows.join('')]}/>
+            <img  className={'mu-arrows-w'} src={img_arr[wayarr.W.arrows.join('')]}/>
+            <img  className={'mu-arrows-ne'} src={img_arr[wayarr.NE.arrows.join('')]}/>
+            <img  className={'mu-arrows-se'} src={img_arr[wayarr.SE.arrows.join('')]}/>
+            <img  className={'mu-arrows-sw'} src={img_arr[wayarr.SW.arrows.join('')]}/>
+            <img  className={'mu-arrows-nw'} src={img_arr[wayarr.NW.arrows.join('')]}/>
+            <img  className={'mu-people-n-p'} src={img_arr[wayarr.N.people.join('')]}/>
+            <img  className={'mu-people-s-p'} src={img_arr[wayarr.S.people.join('')]}/>
+            <img  className={'mu-people-w-p'} src={img_arr[wayarr.W.people.join('')]}/>
+            <img  className={'mu-people-e-p'} src={img_arr[wayarr.E.people.join('')]}/>
+            <img  className={'mu-people-ne-p'} src={img_arr[wayarr.NE.people.join('')]}/>
+            <img  className={'mu-people-se-p'} src={img_arr[wayarr.SE.people.join('')]}/>
+            <img  className={'mu-people-sw-p'} src={img_arr[wayarr.SW.people.join('')]}/>
+            <img  className={'mu-people-nw-p'} src={img_arr[wayarr.NW.people.join('')]}/>
+          </div>
+          
+        </div>
+      )
+    }else{
+      return (
+        <div>
+          {station.toString()}
+          <div style={{width:'300px',height:'300px',border:'2px solid #fff',position:'fixed',top:'26%',left:'40%',overflow:'hidden'}}>
+            <img  className={'arrows-n'} src={img_arr[wayarr.N.arrows.join('')]}/>
+            <img  className={'arrows-s'} src={img_arr[wayarr.S.arrows.join('')]}/>
+            <img  className={'arrows-e'} src={img_arr[wayarr.E.arrows.join('')]}/>
+            <img  className={'arrows-w'} src={img_arr[wayarr.W.arrows.join('')]}/>
+            <img  className={'people-n-p'} src={img_arr[wayarr.N.people.join('')]}/>
+            <img  className={'people-s-p'} src={img_arr[wayarr.S.people.join('')]}/>
+            <img  className={'people-w-p'} src={img_arr[wayarr.W.people.join('')]}/>
+            <img  className={'people-e-p'} src={img_arr[wayarr.E.people.join('')]}/>
+          </div>
+          
+        </div>
+      )
+    }
     return (
       <div>
         {station.toString()}
