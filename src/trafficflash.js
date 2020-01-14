@@ -114,6 +114,7 @@ class Trafficflash extends React.Component {
     )
   }
   setArrows = (arrows) =>{
+    console.log('arrows',arrows)
     switch (arrows){
       case '左转':return 'L';break;
       case '直行':return 'I';break;
@@ -124,6 +125,7 @@ class Trafficflash extends React.Component {
     }
   }
   setPeople = (people) =>{
+    console.log('people',people)
     switch (people){
 
       case '行人':return 'P';break;
@@ -135,6 +137,7 @@ class Trafficflash extends React.Component {
     }
   }
   setDerection = (derection) =>{
+    console.log('derection',derection)
     if(derection.indexOf('向')!=-1){
       switch (derection[0]){
         case '东':return 'E';break;
@@ -165,12 +168,17 @@ class Trafficflash extends React.Component {
     let setArrows = this.setArrows
     let setDerection = this.setDerection
     let setPeople = this.setPeople
+    let regexArrows= RegExp(/直.+|左.+|右.+|掉.+|调.+/);
+    let regexPeople = RegExp(/行.+|非.+/);
+    let regexDerection = RegExp(/.+(?=直)|.+(?=左)|.+(?=右)|.+(?=掉)|.+(?=调)/);
     station.forEach((stationItem, index) => {
+     
+      
       newarr[index] = []
-      newarr[index].arrows = setArrows(stationItem.slice(-2));
-      newarr[index].people = setPeople(stationItem.slice(-2));
-      newarr[index].derection = setDerection(stationItem.slice(0,-2));
-      //console.log(newarr)
+      if(regexArrows.exec(stationItem)){ newarr[index].arrows = setArrows(regexArrows.exec(stationItem)[0]); }
+      if(regexPeople.exec(stationItem)){newarr[index].people = setPeople(regexPeople.exec(stationItem)[0]);}
+      if(regexDerection.exec(stationItem)){newarr[index].derection = setDerection(regexDerection.exec(stationItem)[0]);}
+      console.log(newarr)
     })
     this.editWayarr(newarr)
   }
