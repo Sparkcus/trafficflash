@@ -172,8 +172,6 @@ class Trafficflash extends React.Component {
     let regexPeople = RegExp(/行.+|非.+/);
     let regexDerection = RegExp(/.+(?=直)|.+(?=左)|.+(?=右)|.+(?=掉)|.+(?=调)/);
     station.forEach((stationItem, index) => {
-     
-      
       newarr[index] = []
       if(regexArrows.exec(stationItem)){ newarr[index].arrows = setArrows(regexArrows.exec(stationItem)[0]); }
       if(regexPeople.exec(stationItem)){newarr[index].people = setPeople(regexPeople.exec(stationItem)[0]);}
